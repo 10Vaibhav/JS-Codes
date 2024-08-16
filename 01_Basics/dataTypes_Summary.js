@@ -42,3 +42,32 @@ console.log(typeof OutSideTemp)
 console.log(typeof scoreValue)
 console.log(typeof myFunction)// it's gives function object.
 console.log(id)// it's give symbol(123)
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// Stack (Primitive), Heap(Non-primitive).
+
+// stack - it always gives copy of variable.
+// Heap - it always gives refference.
+
+let myYoutubeName = "vaibhav01"
+
+
+let anotherName = myYoutubeName
+anotherName = "Mahajan01"
+
+console.log(myYoutubeName);
+console.log(anotherName);
+
+let userOne = {
+    email : "user@google.com",
+    upi : "userUPI@id"
+}
+
+
+let userTwo = userOne
+
+userTwo.email = "vaibhav@google.com"
+
+console.log(userOne.email);
+console.log(userTwo.email);
