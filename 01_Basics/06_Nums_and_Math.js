@@ -11,7 +11,7 @@ const otherNumber = 23.8966
 // console.log(otherNumber.toPrecision(2));
 
 const humdreds  = 1000000
-// console.log(humdreds.toLocaleString('en-IN'));
+console.log(humdreds.toLocaleString('en-IN'));
 
 // +++++++++++++++ Maths +++++++++++++++++
 
