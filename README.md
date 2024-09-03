@@ -1,6 +1,6 @@
 # JavaScript Learning Repository
 
-This repository contains JavaScript code examples and projects based on the "Chai aur Code" YouTube playlist by "Hitesh Choudhary" sir.
+This repository contains my personal JavaScript code examples and projects as I learn from the "Chai aur Code" YouTube playlist by Hitesh Choudhary. All code here is written by me as I follow along with the tutorials and apply the concepts taught.
 
 ## About
 
