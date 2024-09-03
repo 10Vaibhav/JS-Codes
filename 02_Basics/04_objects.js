@@ -48,12 +48,52 @@ const users = [
 
 // console.log(users[1].email);
 
-console.log(tinderUser);
+// console.log(tinderUser);
 
-console.log(Object.keys(tinderUser)); // it return array of keys.
+// console.log(Object.keys(tinderUser)); // it return array of keys.
 
-console.log(Object.values(tinderUser)); // it return array of values.
+// console.log(Object.values(tinderUser)); // it return array of values.
 
-console.log(Object.entries(tinderUser)); // it return array of array of objects-attribute(keypair).
+// console.log(Object.entries(tinderUser)); // it return array of array of objects-attribute(keypair).
 
-console.log(tinderUser.hasOwnProperty('isLoggedIn')); // it return true if exists.
+// console.log(tinderUser.hasOwnProperty('isLoggedIn')); // it return true if exists.
+
+
+// De-Structuring of Objects.
+const course = {
+    coursename: "Js in hindi",
+    price: "999",
+    courseInstructor: "Hitesh"
+}
+
+// course.courseInstructor
+
+// const {courseInstructor} = course // directly accessing the attribute value from object. 
+
+const {courseInstructor: instructor } = course // accessing the attribute value and give that to variable.
+
+// console.log(instructor);
+// console.log(course.courseInstructor);
+
+
+// Following is the example that how we use De-structuring in React.
+
+// const navbar = ({company}) => {
+// }
+// navbar(company = "Hitesh")
+
+
+// JSON Object structure. -> here key and value both are string.
+
+// {
+//     "name":"vaibhav",
+//     "coursename" :"js in hindi",
+//     "price" : "free"
+// }
+
+
+[
+    {},
+    {},
+    {}
+]
