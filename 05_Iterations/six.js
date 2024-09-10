@@ -36,3 +36,15 @@ const books = [
     { title: 'Book Eight', genre: 'Science', publish: 2011, edition: 2016 },
     { title: 'Book Nine', genre: 'Non-Fiction', publish: 1981, edition: 1989 },
   ];
+
+  let userBooks = books.filter( (bk) =>
+  {
+    return bk.genre == "History"
+  })// if your are using {} then must to use of return keyword.
+
+ userBooks = books.filter((bk)=>
+     bk.publish >= 1995 && bk.genre === "History"
+  )// if not using {} then not need to use return keyword.
+
+
+  console.log(userBooks)
