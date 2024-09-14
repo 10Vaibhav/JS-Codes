@@ -1,23 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>DOM Learning</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <style>
-      .bg-black{
-        background-color: black;
-        color: white;
-      }
-    </style>
-  </head>
-  <body class="bg-black">
-        <div>
-            <h1 class="Heading">DOM Learning on Chai aur Code</h1>
-            <p>Lorem ipsum dolor sit amet.
-            </p>
-        </div>
-  </body>
+  <title>DOM Learning</title>
+
+  <style>
+    .bg-black {
+      background-color: black;
+      color: white;
+    }
+  </style>
+</head>
+
+<body class="bg-black">
+  <div>
+    <h1 id="title" class="Heading">DOM Learning on Chai aur Code <span style="display: none;">test text</span></h1>
+    <h2>Lorem ipsum dolor sit.</h2>
+    <h2>Lorem ipsum dolor sit.</h2>
+    <h2>Lorem, ipsum.</h2>
+    <input type="password" name="userPassword" id="passwordInput">
+    <p>Lorem ipsum dolor sit amet.
+    </p>
+
+    <ul>
+      <li class ="list-item">two</li>
+      <li class ="list-item">three</li>
+      <li class ="list-item">one</li>
+      <li class ="list-item">Four</li>
+    </ul>
+  </div>
+</body>
+
 </html>
+
+
+
+<!--
+// 🌟 Get the element with the ID "title"
+document.getElementById("title");
+
+// 🆔 Get the ID of the element with the ID "title"
+document.getElementById("title").id;
+
+// 🏷️ Get the class name(s) of the element with the ID "title"
+document.getElementById("title").className;
+
+// ✏️ Set the class attribute of the element with the ID "title" to "test"
+document.getElementById("title").setAttribute("class", "test");
+
+// ✏️ Set the class attribute of the element with the ID "title" to "test Heading"
+document.getElementById("title").setAttribute("class", "test Heading");
+
+// 📥 Store the element with the ID "title" in a variable called title
+const title = document.getElementById("title");
+
+// 🎨 Change the background color of the title element to green
+title.style.backgroundColor = "green";
+
+// 📏 Add padding of 15px to the title element
+title.style.padding = "15px";
+
+// 🔲 Add a border radius of 15px to the title element
+title.style.borderRadius = "15px";
+
+// ################### Difference Between innerText, innerHTML, textContent ############################
+
+// 📝 Get the innerText of the title element
+// innerText returns the visible text content of a node, excluding hidden elements
+title.innerText; // 'DOM Learning on Chai aur Code'
+
+// 📝 Get the textContent of the title element
+// textContent returns the full text content of a node, including hidden elements
+title.textContent; // 'DOM Learning on Chai aur Code test text'
+
+// 📝 Get the innerHTML of the title element
+// innerHTML returns the HTML content of a node, including any HTML tags
+title.innerHTML; // 'DOM Learning on Chai aur Code <span style="display: none;">test text</span>'
+
+// 📚 Get elements by class name "Heading"
+document.getElementsByClassName("Heading");
+
+// 🔍 Get the first <h2> element
+document.querySelector('h2');
+
+// 🔍 Get the element with the ID "title"
+document.querySelector('#title');
+
+// 🔍 Get the first element with the class "Heading"
+document.querySelector('.Heading');
+
+// 🔍 Get the first <input> element of type "password"
+document.querySelector('input[type="password"]');
+
+// 📥 Store the first <ul> element in a variable called myul
+const myul = document.querySelector("ul");
+
+// 📥 Store the first <li> element inside myul in a variable called turnGreen
+const turnGreen = myul.querySelector("li");
+
+// 🎨 Change the background color of the turnGreen element to green
+turnGreen.style.backgroundColor = "green";
+
+// 📏 Add padding of 10px to the turnGreen element
+turnGreen.style.padding = "10px";
+
+// 📝 Change the innerText of the turnGreen element to "Five"
+turnGreen.innerText = "Five";
+
+// 📋 Select all <li> elements and store them in templist
+const templist = document.querySelectorAll("li");
+
+// 📋 Create an array myArr with values [1, 2, 3]
+const myArr = [1, 2, 3];
+
+// ❌ This will not work because templist is a NodeList, not a single element
+// templist.style.color = "green";
+
+// 🎨 Change the color of the first <li> element to green
+templist[0].style.color = "green";
+
+// 📋 Select all <h1> elements and store them in myH1
+const myH1 = document.querySelectorAll("h1");
+
+// ❌ This will not work because myH1 is a NodeList, not a single element
+// myH1.style.color = "green";
+
+// 🎨 Change the background color of each <li> element to green
+templist.forEach(function (l) {
+  l.style.backgroundColor = "green";
+});
+
+// 🎨 Change the color of the first <li> element to blue
+templist[0].style.color = "blue";
+
+// 📋 Select all elements with the class "list-item" and store them in tempClassList
+const tempClassList = document.getElementsByClassName("list-item");
+
+// ❌ This will not work because tempClassList is an HTMLCollection, not an array
+// tempClassList.forEach(function (li) {
+//   console.log(li);
+// });
+
+// 📋 Convert tempClassList to an array and store it in myConvertedArray
+const myConvertedArray = Array.from(tempClassList);
+
+// 🎨 Change the color of each element in myConvertedArray to orange
+myConvertedArray.forEach(function (li) {
+  li.style.color = "orange";
+});
+
+// 📋 Select all <h3> elements and store them in allH3
+const allH3 = document.querySelectorAll("h3");
+
+// 📋 Select all elements with the class "mw-headline" and store them in myH2
+const myH2 = document.querySelectorAll(".mw-headline");
+
+// 🎨 Change the color of each element in myH2 to red
+myH2.forEach(function (h) {
+  h.style.color = "red";
+});
+
+// 🎨 Change the color, background color, padding, and innerText of each element in myH2
+myH2.forEach(function (h) {
+  h.style.color = "black";
+  h.style.backgroundColor = "green";
+  h.style.padding = "10px";
+  h.innerText = "Vaibhav";
+});
+
+-->
