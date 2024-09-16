@@ -31,4 +31,4 @@ buttons.forEach(function (button){
                 break;
         }
     })
-});
+}); d
