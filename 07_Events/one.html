@@ -7,7 +7,7 @@
     <title>Html Events</title>
 </head>
 
-<body>
+<body style="background-color: black; color:aliceblue">
     <h2>Amazing Images</h2>
     <div>
         <ul id="images">
@@ -15,10 +15,82 @@
             <li><img width="200px" id="zoro" src="zoro.jpg" alt=""></li>
             <li><img width="200px" id="age" src="ace.jpg" alt=""></li>
             <li><img width="200px" id="shanks" src="shanks.jpg" alt=""></li>
+            <!-- directly adding events in  inline is worst approach  -->
             <li><img width="200px" id="joyBoy" src="joyBoy.jpg" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://www.google.com" id="google">Google</a></li>
+
         </ul>
     </div>
+    <script>
 
+        //it gives less features so, we generally avoid this type of method:
+
+        // document.getElementById("shanks").onclick = function (){
+        //     alert("shanks clicked")
+        // }
+
+        // Method 1: Best approach
+        // document.getElementById("shanks").addEventListener("click", function () {
+        //     alert("shanks clicked again")
+        // }, false)
+
+        //Method 2:
+        //attachEvent()
+        //jQuery - on
+
+        // document.getElementById("images").addEventListener("click", function(e){
+        //     console.log('clicked inside the url')
+        // },false)
+
+        //The concepts of bubbling and capturing are two phases of event propagation.
+        // third parameter in addEventLister that is "false" its named as bubbleLing (bottom Up approach), it set as "false" in event listener by default.
+        // third parameter in addEventLister if "true" than we named it as Capturing Mode (top down approach).
+        // we decide when we use bubbleLing and when we use Capturing , it depend upon useCase.
+
+        // document.getElementById("shanks").addEventListener("click", function (e){
+        //     console.log("Shanks get clicked");
+        //     e.stopPropagation();
+        // },false)
+
+        // document.getElementById("google").addEventListener("click",function(e){
+        //     e.preventDefault()
+        //     e.stopPropagation()
+        //     console.log("google clicked");
+        // },false)
+
+        //1. type: This property returns a string indicating the type of the event (e.g., "click", "keydown").
+
+        //2. timestamp: This property returns the time at which the event was created.
+
+        //3. defaultPrevented: This property returns a boolean indicating whether the default action of the event has been prevented using preventDefault() method.
+
+        //4. target: This property refers to the element that triggered the event.
+
+        // 5. toElement and srcElement: These are properties similar to target, but they are non-standard and primarily used in older versions of Internet Explorer. srcElement is essentially an alias for target.
+
+        // 6. currentTarget: This property refers to the element that the event listener is currently attached to, as opposed to target, which is the element that initiated the event.
+
+        // 7. clientX and clientY: These properties provide the horizontal and vertical coordinates within the application's client area at which the event occurred (as opposed to the coordinates within the entire page).
+
+        // 8. screenX and screenY: These properties provide the horizontal and vertical coordinates within the entire screen of the mouse pointer when the event occurred.
+
+        // 9. altKey, ctrlKey, and shiftKey: These are boolean properties that indicate whether the respective keys were pressed when the event was triggered.
+
+        //10. keyCode: This property is deprecated. It used to indicate the code of the key that was pressed to trigger a keyboard event. The recommended property to use now is key.
+
+
+        document.querySelector("#images").addEventListener("click", function (e) {
+            console.log(e.target.tagName)
+            if (e.target.tagName === "IMG") {
+                console.log(e.target.id);
+                let removeIt = e.target.parentNode
+                removeIt.remove();
+                // removeIt.parentNode.removeChild(removeIt);
+            }
+        }, false)
+
+
+    </script>
 </body>
 
 </html>
