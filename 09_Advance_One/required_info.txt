@@ -1,0 +1,40 @@
+GET request:
+
+    1.Used to retrieve data from a server
+    2.Parameters are sent in the URL
+    3.Data is visible in the URL
+    4.Limited amount of data can be sent
+    5.Typically used for fetching resources
+
+POST request:
+
+    1.Used to submit data to be processed by the server
+    2.Parameters are sent in the request body
+    3.Data is not visible in the URL
+    4.Can send larger amounts of data
+    5.Typically used for submitting forms or uploading files
+
+Key differences:
+
+    1.Purpose: GET retrieves data, POST submits data
+    2.Data visibility: GET exposes data in URL, POST hides it in the request body
+    3.Data size: GET has limitations, POST can handle larger amounts
+    4.Caching: GET requests can be cached, POST requests are not typically cached
+    5.Idempotency: GET is idempotent (repeatable without side effects), POST is not
+
+################################################################################################################
+
+Following is the description of the readyState property values for an XMLHttpRequest object in JavaScript.
+The readyState property represents the state of the client-server communication. Here's a breakdown of each state:
+
+0 - UNSENT: The XMLHttpRequest client has been created, but the open() method hasn't been called yet.
+
+1 - OPENED: The open() method has been called, initializing a new request or reinitialize an existing one.
+
+2 - HEADERS_RECEIVED: The send() method has been called, and the response headers have been received along with the status.
+
+3 - LOADING: The response body is being received. At this stage, the responseText property holds partial data.
+
+4 - DONE: The operation is complete. This could mean that data transfer has either finished successfully or failed.
+
+These states are useful for tracking the progress of an asynchronous request and performing actions at different stages of the communication process. Developers often use these states in conjunction with the onreadystatechange event handler to manage AJAX requests

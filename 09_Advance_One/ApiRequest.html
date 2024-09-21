@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Api Request</title>
+
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .cardTemplate {
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-color: #ffffff;
+            color: #000000;
+            border: 2px solid orangered;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        #image {
+            height: 80px;
+            width: 80px;
+            border-radius: 50%;
+            border: 1px solid #6d6a6a;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            margin: 5px 0;
+        }
+
+        button {
+            background-color: orangered;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: darkred;
+        }
+    </style>
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <button id="showCard">Press Me</button>
+        <div id="card"></div>
+    </div>
+
+</body>
+<script>
+
+    const getData = function () {
+        const requestUrl = 'https://api.github.com/users/10Vaibhav';
+
+        const xhr = new XMLHttpRequest();
+
+        xhr.open('GET', requestUrl);
+
+        xhr.onreadystatechange = function () {
+            console.log(xhr.readyState)
+            if (xhr.readyState === 4) {
+                const data = JSON.parse(this.responseText)
+
+                console.log(data)
+
+                const followers = data.followers;
+                const following = data.following;
+                const profilePic = data.avatar_url;
+                const name = data.name;
+                const repoCount = data.public_repos;
+
+                const card = document.getElementById("card")
+
+                card.innerHTML = `
+            <div class="cardTemplate">
+            <img id="image" src= ${profilePic} alt="">
+            <h3>Name : ${name}</h3>
+            <h3>Followers : ${followers}</h3>
+            <h3>Followings : ${following}</h3>
+            <h3>Repo Count : ${repoCount}</h3>
+            </div>
+            `;
+
+            }
+        };
+
+        xhr.send();
+
+    };
+
+    document.getElementById("showCard").addEventListener("click", getData);
+
+</script>
+
+</html>
