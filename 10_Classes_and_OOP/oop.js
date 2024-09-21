@@ -38,8 +38,9 @@ const userTwo = new user("ChaiAurCode", 11, false)
 console.log(userOne.constructor); // constructor is reference of itself.
 // console.log(userTwo);
 
-// 1.while using new keyword first it create a new empty  object.
-// 2.
-// 3.
-// 4.
+// 1. While using the new keyword, it first creates a new empty object.
+// 2. It then sets the prototype of this new object to the prototype property of the constructor function.
+// 3. The constructor function is called with 'this' set to the newly created object.
+// 4. If the constructor function returns an object, that object is returned by the 'new' expression. Otherwise, the newly created object is returned.
+
 
