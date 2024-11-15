@@ -20,3 +20,6 @@ The repository is organized as follows:
 - [Chai aur Code YouTube Channel](https://youtu.be/Hr5iLG7sUa0?si=9ecF60FhysiNtyXI)
 - [JavaScript MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
+## 📄 License
+This repository is licensed under the [MIT License](LICENSE).
+
