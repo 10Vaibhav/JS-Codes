@@ -51,8 +51,9 @@ function addone(num){
 }
 
 
-addTwo(5); // it gives array.
+//addTwo(5); // it gives array.
 const addTwo = function(num){
     return num+2;
 }
 
+addTwo(5);
