@@ -1,0 +1,72 @@
+<body>
+    <input type="text"></input>
+    <button onclick="addTodo()">Add todo!</button>
+    <button onclick="deleteLastTodo()">Delete Last Todo</button>
+    <button onclick="deleteFirstTodo()">Delete First Todo</button>
+    <div id="todolist"></div>
+
+    <script>
+        let todos = [];
+        let ctr = 0;
+
+        // state
+        function addTodo() {
+            todos.push({
+                title: document.querySelector("input").value
+            })
+            render();
+        }
+
+        function deleteLastTodo() {
+            todos.splice(todos.length - 1, 1) // delete last element from todo.
+            render();
+        }
+
+
+        function deleteFirstTodo() {
+            todos.splice(0, 1) // delete First element from todo.
+            render();
+        }
+
+        function deleteTodo(id) {
+            // Find the index of the todo to delete
+            const element = document.getElementById(id);
+            const value = element.querySelector("h1").innerHTML
+
+            const index = todos.findIndex((todo, todoIndex) => todo.title === value);
+
+            if(index != -1){
+                todos.splice(index,1);
+                render();
+            }
+
+            render();
+        }
+
+        // Component
+        function createTodoComponent(element) {
+            const divEL = document.createElement("div");
+            const h1EL = document.createElement("h1");
+            const buttonEL = document.createElement("button");
+            divEL.setAttribute("id", ctr);
+            h1EL.innerHTML = element.title;
+            buttonEL.innerHTML = "Delete";
+            buttonEL.setAttribute("onclick", "deleteTodo(" + ctr + ")")
+            divEL.appendChild(h1EL);
+            divEL.appendChild(buttonEL);
+            ctr = ctr + 1;
+            return divEL;
+        }
+
+        // React
+        function render() {
+            document.querySelector("#todolist").innerHTML = "";
+            todos.forEach((element) => {
+                const component = createTodoComponent(element);
+                document.getElementById("todolist").appendChild(component);
+            });
+            document.querySelector("input").value = "";
+        }
+
+    </script>
+</body>
