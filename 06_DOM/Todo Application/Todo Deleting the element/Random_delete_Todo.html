@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Todo Delete</title>
+</head>
+
+<body>
+    <h2>Todo 1</h2>
+    <h2>Todo 2</h2>
+    <h2>Todo 3</h2>
+
+    <button onclick="deleteRandomTodo()">Delete Random Todo</button>
+</body>
+
+<script>
+    function deleteRandomTodo(){
+        const element = document.querySelector("h2");
+        const ParentElement = element.parentNode;
+        ParentElement.removeChild(element);
+    }
+</script>
+
+</html>
