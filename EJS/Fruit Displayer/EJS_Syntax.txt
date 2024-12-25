@@ -1,0 +1,13 @@
+################################## EJS TAGS #########################################
+
+<%= %> ----> JS OutPut -----> ex.<%=variable%>
+
+<% %> -----> JS Execute (but not give an OutPut)-------> ex.<% console.log("hello") %>
+
+<%- %> -----> Render HTML ----> ex.<%- <h1> Hello </h1> %>
+
+<%% %%> -----> Show <% or %>
+
+<%# %> -------> Stop Execution (Comments) -------> ex.<%# This is a comment %>
+
+<%-include("<FILE NAME>") %> -----> Insert another EJS File ------> ex. <%-include("header.ejs")%>
