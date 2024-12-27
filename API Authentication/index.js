@@ -22,7 +22,7 @@ try{
 
   res.render("index.ejs", {content : JSON.stringify(content)});
 }catch (error){
-  console.log(error.message);
+  console.log(error.message)
 }
 
 });
@@ -51,7 +51,7 @@ app.get("/apiKey", async(req, res) => {
   const data = request.data;
   res.render("index.ejs", {content : JSON.stringify(data)});
   }catch (error){
-    console.log(error.message);
+    console.log(error)
   }
 
 });
@@ -66,7 +66,7 @@ app.get("/bearerToken", async(req, res) => {
   });
   const data = request.data;
   res.render("index.ejs", {content : JSON.stringify(data)});
- }catch (error){
+ }catch(error){
   console.log(error.message);
  }
 
