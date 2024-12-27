@@ -11,7 +11,7 @@ This project demonstrates different types of API authentication methods using Ex
   - [Bearer Token Authentication](#bearer-token-authentication)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Environment Variables](#environment-variables)
+
 
 ## Setup
 
