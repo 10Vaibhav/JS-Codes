@@ -14,58 +14,62 @@ app.get("/", (req, res) => {
   res.render("index.ejs", { content: "API Response." });
 });
 
-app.get("/noAuth", async (req, res) => {
-  try {
-    const request = await axios.get(API_URL + "/random");
-    const content = request.data;
-    res.render("index.ejs", { content: JSON.stringify(content) });
-  } catch (error) {
-    res.status(404).send("Error:", error.message);
-  }
+app.get("/noAuth", async(req, res) => {
+
+try{
+  const request = await axios.get("https://secrets-api.appbrewery.com/random");
+  const content = request.data;
+
+  res.render("index.ejs", {content : JSON.stringify(content)});
+}catch (error){
+  console.log(error.message);
+}
+
 });
 
-app.get("/basicAuth", async (req, res) => {
-  try {
-    const request = await axios.get(API_URL + "/all?page=2", {
+app.get("/basicAuth", async(req, res) => {
+
+  try{
+    const request = await axios.get("https://secrets-api.appbrewery.com/all?page=2", {
       auth: {
-        username: yourUsername,
-        password: yourPassword,
-      },
+        username : yourUsername,
+        password : yourPassword,
+      }
     });
     const content = request.data;
-    res.render("index.ejs", { content: JSON.stringify(content) });
-  } catch (error) {
-    res.status(404).send("Error:" + error.message);
+    res.render("index.ejs", {content: JSON.stringify(content)});
+  }catch (error){
+    console.log(error.message);
   }
+
 });
 
-app.get("/apiKey", async (req, res) => {
-  try {
-    const request = await axios.get(API_URL + "/filter", {
-      params: {
-        score: 5,
-        apiKey: yourAPIKey,
-      },
-    });
-    const data = request.data;
-    res.render("index.ejs", { content: JSON.stringify(data) });
-  } catch (error) {
-    res.status(404).send("Error:" + error.message);
+app.get("/apiKey", async(req, res) => {
+
+  try{
+  const request = await axios.get(`https://secrets-api.appbrewery.com/filter?score=5&apiKey=${yourAPIKey}`)
+  const data = request.data;
+  res.render("index.ejs", {content : JSON.stringify(data)});
+  }catch (error){
+    console.log(error.message);
   }
+
 });
 
-const config = {
-  headers: { Authorization: `Bearer ${yourBearerToken}` },
-};
+app.get("/bearerToken", async(req, res) => {
+ try{
+  
+  const request = await axios.get("https://secrets-api.appbrewery.com/secrets/42", {
+    headers: {
+      Authorization: `Bearer ${yourBearerToken}`
+    },
+  });
+  const data = request.data;
+  res.render("index.ejs", {content : JSON.stringify(data)});
+ }catch (error){
+  console.log(error.message);
+ }
 
-app.get("/bearerToken", async (req, res) => {
-  try {
-    const request = await axios.get(API_URL + "/secrets/42", config);
-    const data = request.data;
-    res.render("index.ejs", { content: JSON.stringify(data) });
-  } catch (error) {
-    res.status(404).send("Error:" + error.message);
-  }
 });
 
 app.listen(port, () => {
