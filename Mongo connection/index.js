@@ -3,35 +3,70 @@ const { UserModel, TodoModel } = require("./db");
 const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const bcrypt = require("bcrypt");
+const { z } = require("zod");
 
 dotenv.config();
 
 const JWT_SECRET = process.env.JWT_SECRET;
 
-mongoose.connect(
-  process.env.connection
-);
+mongoose.connect(process.env.connection);
 
 const app = express();
 app.use(express.json());
 
 app.post("/signup", async (req, res) => {
+  const requiredBody = z.object({
+    username: z.string().min(3).max(100).email(),
+    password: z.string().min(3).max(100),
+    name: z.string().min(3).max(30),
+  });
+
+  // const parseData = requiredBody.parse(req.body); // it throw an error if not safely parse while safeParse doesn't throw an error
+  const parsedDataWithSuccess = requiredBody.safeParse(req.body);
+
+  /*
+{
+      success : true | false,
+      data: {},
+      errors: []
+}
+  */
+
+  if (!parsedDataWithSuccess.success) {
+    res.json({
+      message: "Incorrect format!!",
+      error: parsedDataWithSuccess.error,
+    });
+    return;
+  }
+
   const username = req.body.username;
   const password = req.body.password;
   const name = req.body.name;
 
+  let errorThrown = false;
   try {
+    const hashedPassword = await bcrypt.hash(password, 5);
+    console.log(hashedPassword);
+
     await UserModel.create({
       username: username,
-      password: password,
+      password: hashedPassword,
       name: name,
-    });
-
-    res.json({
-      message: "You are Singed UP!!",
     });
   } catch (error) {
     console.log(error);
+    res.json({
+      message: "User already exists!!",
+    });
+    errorThrown = true;
+  }
+
+  if (!errorThrown) {
+    res.json({
+      message: "You are Singed UP!!",
+    });
   }
 });
 
@@ -41,12 +76,19 @@ app.post("/signin", async (req, res) => {
 
   const user = await UserModel.findOne({
     username: username,
-    password: password,
   });
 
-  console.log(user);
+  if (!user) {
+    res.status(403).json({
+      message: "User does not exist in our DB!!",
+    });
 
-  if (user) {
+    return;
+  }
+
+  const passwordMatch = await bcrypt.compare(password, user.password);
+
+  if (passwordMatch) {
     console.log(user._id.toString());
 
     const token = jwt.sign(
@@ -90,6 +132,7 @@ app.post("/todo", auth, async (req, res) => {
 app.get("/todos", auth, async (req, res) => {
   const userId = req.id;
 
+  try {
     const todos = await TodoModel.find({
       userId: userId,
     });
@@ -97,7 +140,9 @@ app.get("/todos", auth, async (req, res) => {
     res.json({
       todos: todos,
     });
-
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 function auth(req, res, next) {
