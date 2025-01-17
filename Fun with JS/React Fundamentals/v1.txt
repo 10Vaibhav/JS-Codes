@@ -1,0 +1,57 @@
+import { useState } from "react";
+import { PostComponent } from "./Post";
+
+function App(){
+
+  const [posts, setPosts] = useState([]);
+
+//   const posts = [{
+//     name : "Vaibhav",
+//     subtitle: "999 followers",
+//     time: "3hr ago",
+//     image: "https://i.pinimg.com/236x/0f/a3/fa/0fa3fabc69ba89f474c3af53e42c8160.jpg",
+//     description: "How to get hired in 2025? I lost my job in 2024, this is the roadmap i followed to get a job."
+//   },{
+//     name: "Pihu",
+//     subtitle: "111000 followers",
+//     time: "2min ago",
+//     image: "https://i.pinimg.com/236x/1f/8f/2b/1f8f2bc3f34aff96cd4d56e387a88872.jpg",
+//     description: "What to know how to win big? Check out How these folks won $6000 in bounties!!"
+//   }
+// ]
+
+  const postComponents = posts.map((post) => <PostComponent
+  name={post.name}
+  subtitle={post.subtitle}
+  time={post.time}
+  image={post.image}
+  description={post.description}
+  />)
+
+  function addPost(){
+
+    setPosts([...posts,{
+      name : "Vaibhav",
+      subtitle: "999 followers",
+      time: "3hr ago",
+      image: "https://i.pinimg.com/236x/0f/a3/fa/0fa3fabc69ba89f474c3af53e42c8160.jpg",
+      description: "How to get hired in 2025? I lost my job in 2024, this is the roadmap i followed to get a job."
+    }])
+
+  }
+
+  return (
+    <div style={{background: "#dfe6e9", height: "100vh"}}>
+      <button onClick={addPost}>Add Post</button>
+      <div style={{display:"flex", justifyContent: "center"}}>
+
+        <div>
+          {postComponents}
+        </div>
+      </div>
+    </div>
+  )
+
+}
+
+export default App

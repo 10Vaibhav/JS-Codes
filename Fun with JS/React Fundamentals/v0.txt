@@ -1,0 +1,134 @@
+import {useState} from "react";
+
+function App() {
+
+  return (
+
+<div style={{background: "#dfe6e9", height: "100vh"}}>
+
+    <ToggleMessage />
+    <Notification/>
+
+      <Greeting
+      name={"Vaibhav"}
+      />
+
+      <div style={{display: "flex", justifyContent: "center"}}>
+
+        <div>
+
+        <div style={{margin: 5}}>
+        <PostComponent
+        name={"Pihu"}
+        subTitle={"20 followers"}
+        time={"2min ago"}
+        image={"https://i.pinimg.com/236x/1f/8f/2b/1f8f2bc3f34aff96cd4d56e387a88872.jpg"}
+        description={"What to know how to win big? Check out how these folks won $6000 in bounties."}
+        />
+        </div>
+
+        <div style={{margin: 5}}>
+        <PostComponent
+        name={"Vaibhav"}
+        subTitle={"promoted"}
+        image={"https://i.pinimg.com/236x/0f/a3/fa/0fa3fabc69ba89f474c3af53e42c8160.jpg"}
+        description={"How to get hired in 2025? I lost my job in 2024, this is the roadmap i followed to get a job."}
+        />
+        </div>
+
+        {/* <div style={{margin: 5}}>
+        <PostComponent
+        name={"Mr.Unknown"}
+        subTitle={"45 followers"}
+        time={"10min ago"}
+        image={"https://i.pinimg.com/736x/3b/b3/d6/3bb3d628bbcc152f29a9000bacd338fe.jpg"}
+        description={"Mr.Unknown Helps who need it! trust me, okk ??"}
+        />
+        </div> */}
+
+        </div>
+
+      </div>
+    </div>
+  )
+
+}
+
+const ToggleMessage = ()=>{
+
+  const [isVisible, setIsVisible] = useState(false);
+
+  return (
+    <div>
+      <button onClick={()=>{setIsVisible(!isVisible)}}>Toggle Message</button>
+      {isVisible && <p>This Message is Conditionally Rendered !!</p>}
+    </div>
+  )
+
+}
+
+const Notification = ()=>{
+  const [notificationCount, setNotification] = useState(0);
+
+  function increaseCount(){
+    setNotification(notificationCount + 1);
+  }
+
+  return (
+    <div>
+      <button onClick={increaseCount}>Notification Count</button>
+      {notificationCount}
+    </div>
+  )
+}
+
+const Greeting =  ({name})=>{
+  return <h1>Hello, {name}!</h1>
+};
+
+const style = {width: 200, backgroundColor:"white", borderRadius: 10, borderColor: "gray", borderWidth: 1, padding: 20}
+
+function PostComponent({name, subTitle, time, image, description}){
+
+  return (
+
+<div style={style}>
+
+    <div style={{display: "flex"}}>
+
+      <img src={image} alt={"logo"} style={{
+        width: 20,
+        height: 20,
+        borderRadius: 20
+      }} />
+
+      <div style={{fontSize: 10, marginLeft: 10}}>
+        <b>
+          {name}
+        </b>
+
+        <div>{subTitle}</div>
+
+       { (time !== undefined) ? <div style={{display: "flex"}}>
+        <div>{time}</div>
+        <img src={"https://i.pinimg.com/736x/28/96/40/289640a064e13dd9be3c96f8218e04fa.jpg"}  style={{width: 13, height: 12}}/>
+        </div>
+        :<div></div>
+       }
+
+      </div>
+
+    </div>
+
+    <div style={{fontSize: 12}}>
+        {description}
+    </div>
+
+</div>
+
+  )
+
+}
+
+
+export default App
