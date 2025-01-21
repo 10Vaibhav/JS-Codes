@@ -1,0 +1,36 @@
+import React from "react";
+// List and Keys
+
+const App = ()=>{
+
+  const todos = [{
+    title : "Go to Gym",
+    done: false
+  },{
+    title: "Eat food",
+    done: true
+  }];
+
+  // const todosComponent = todos.map(todo => <Todo title={todo.title} done = {todo.done} />)
+
+  return (
+    <div>
+        {/* {todosComponent} */}
+
+      {[
+        <Todo key={1} title={"Go to Gym"} done = {false} />,
+        <Todo key={2} title={"Eat Food"} done = {true} />
+      ]}
+
+    </div>
+  );
+
+};
+
+function Todo({title, done}){
+  return <div>
+    {title} - {done ? "Done !!": "Not done !!"}
+  </div>
+}
+
+export default App;

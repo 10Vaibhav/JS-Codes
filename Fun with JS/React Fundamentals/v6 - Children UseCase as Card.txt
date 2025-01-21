@@ -1,0 +1,49 @@
+import {useState ,useEffect} from "react";
+
+
+function App(){
+
+
+  return <div style={{display: "flex", background: "gray"}}>
+
+    {/* <Card children={<div style={{color: "green"}}>
+      What Do You Want To Post
+      <br/>
+      <br/>
+      <input type="text" />
+      </div>}/> */}
+
+      <Card>
+        <div style={{color: "green"}}>
+          What Do You Want To Post
+          <br/>
+          <br/>
+          <input type="text" />
+          </div>
+        </Card>
+
+      {/* <Card children={"hi there"}/> */}
+
+      <Card>
+        <div>
+          HI there !!
+        </div>
+      </Card>
+
+  </div>
+
+}
+
+
+function Card({children}){
+
+  return <div style={{backgroundColor: "white", borderRadius: 10, color: "black", padding: 10, margin: 10}}>
+    Upper TopBar
+      {children}
+    Lower Bottom Footer
+  </div>
+
+}
+
+
+export default App

@@ -1,0 +1,61 @@
+import React, { Component } from 'react';
+
+
+function App(){
+
+    return (
+        <div>
+        <ErrorBoundary>
+            <Card1/>
+        </ErrorBoundary>
+        <Card2/>
+        </div>
+    );
+};
+
+class ErrorBoundary extends Component {
+    constructor(props){
+        super(props);
+        this.state = {hasError: false}
+    }
+
+    static getDerivedStateFromError(error){
+        return {hasError: true};
+    }
+
+    componentDidCatch(error, info){
+        console.error("Error Caught: ", error, info);
+    }
+
+    render(){
+        if(this.state.hasError){
+            return <div style={{background:"red", borderRadius: 20, padding: 20 }}>
+            Something Went Wrong !!
+        </div>
+        }
+
+        return this.props.children;
+
+    }
+}
+
+
+function Card1(){
+
+    throw new Error ("Error while rendering");
+
+    return <div style={{background:"red", borderRadius: 20, padding: 20}}>
+        HI There !!
+    </div>
+
+}
+
+
+function Card2(){
+
+    return <div style={{background:"red", borderRadius: 20, padding: 20, margin: 20}}>
+        Hello !
+    </div>
+}
+
+export default App;
