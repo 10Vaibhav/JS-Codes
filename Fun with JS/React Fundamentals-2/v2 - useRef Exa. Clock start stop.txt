@@ -1,0 +1,36 @@
+import { useRef, useState } from "react";
+
+// Clock with a Start and Stop Functionality.
+function App(){
+
+  const [currentCount, setCurrentCount] = useState(1);
+  const [isRunning, setIsRunning] = useState(false);
+  const timeRef = useRef();
+
+  function startClock(){
+    if(!isRunning){
+    let value = setInterval(function (){
+      setCurrentCount(c=>c+1);
+    },1000);
+
+    timeRef.current = value;
+    setIsRunning(true);
+    }
+  }
+
+  function stopClock(){
+    clearInterval(timeRef.current);
+    setIsRunning(false);
+  }
+
+  return <div>
+    {currentCount}
+    <br/>
+    <button onClick={startClock} disabled={isRunning}>Start</button>
+    <button onClick={stopClock}>Stop</button>
+  </div>
+}
+
+
+
+export default App;

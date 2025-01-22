@@ -1,0 +1,46 @@
+import { useRef } from "react";
+
+
+// useRef - Create a reference to a value, such that when u change the value, the component DOES NOT RE-RENDER
+
+function App(){
+
+  const inputRef = useRef();
+
+  function focusOnInput(){
+    // document.getElementById("Fname").focus();
+    inputRef.current.focus()
+  }
+
+  return <div>
+    <h1>Sign Up</h1>
+    <br/>
+    <input ref={inputRef} type={"text"}></input>
+    <input type={"text"}></input>
+    <button onClick={focusOnInput}>Submit</button>
+    <br/>
+    <br/>
+    <FocusInput/>
+  </div>
+}
+
+function FocusInput() {
+  // Step 1: Create a ref to store the input element
+  const inputRef = useRef(null);
+
+  // Step 2: Define the function to focus the input
+  const handleFocus = () => {
+    // Access the DOM node and call the focus method
+    inputRef.current.focus();
+  };
+
+  return (
+    <div>
+      {/* Step 3: Attach the ref to the input element */}
+      <input ref={inputRef} type="text" placeholder="Click button to focus me" />
+      <button onClick={handleFocus}>Focus the input</button>
+    </div>
+  );
+}
+
+export default App;
