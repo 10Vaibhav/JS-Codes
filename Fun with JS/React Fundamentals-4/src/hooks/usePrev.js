@@ -9,3 +9,5 @@ export const usePrev = (value) =>{
 
     return ref.current;
 }
+
+// it returns first, effect gets called later.

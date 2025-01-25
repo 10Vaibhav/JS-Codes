@@ -1,0 +1,19 @@
+import {useState, useRef, useEffect} from "react";
+import "./App.css";
+import {useDebounce} from "./hooks/useDebounce1"
+
+function App(){
+
+  function sendDataToBackend(){
+    console.log("Request is successFully Send to Backend");
+  }
+
+  const debounceFn = useDebounce(sendDataToBackend);
+
+  return <div>
+    <input type="text" onChange={debounceFn}></input>
+  </div>
+
+}
+
+export default App;
