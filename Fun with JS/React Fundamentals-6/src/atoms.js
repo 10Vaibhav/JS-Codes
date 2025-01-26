@@ -32,4 +32,4 @@ export const totalNotificationSelector = selector({
     }
 })
 
-// value is a function which gives the access of get object.
+// get is a function which gives the access of get object.
