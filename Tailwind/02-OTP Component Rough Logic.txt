@@ -1,0 +1,100 @@
+import React from "react";
+import { useRef, useState } from "react";
+
+function Otp() {
+  const ref1 = useRef();
+  const ref2 = useRef();
+  const ref3 = useRef();
+  const ref4 = useRef();
+  const ref5 = useRef();
+  const ref6 = useRef();
+
+  return (
+    <div className="flex justify-center">
+      <SubOtpBox
+        ref={ref1}
+        onDone={() => {
+          ref2.current.focus();
+        }}
+      />
+
+      <SubOtpBox
+        ref={ref2}
+        onDone={() => {
+          ref3.current.focus();
+        }}
+        onBack={() => {
+          ref1.current.focus();
+        }}
+      />
+
+      <SubOtpBox
+        ref={ref3}
+        onDone={() => {
+          ref4.current.focus();
+        }}
+        onBack={() => {
+          ref2.current.focus();
+        }}
+      />
+
+      <SubOtpBox
+        ref={ref4}
+        onDone={() => {
+          ref5.current.focus();
+        }}
+        onBack={() => {
+          ref3.current.focus();
+        }}
+      />
+
+      <SubOtpBox
+        ref={ref5}
+        onDone={() => {
+          ref6.current.focus();
+        }}
+        onBack={() => {
+          ref4.current.focus();
+        }}
+      />
+
+      <SubOtpBox
+        ref={ref6}
+        onBack={() => {
+          ref5.current.focus();
+        }}
+      />
+    </div>
+  );
+}
+
+const SubOtpBox = ({ ref, onDone, onBack }) => {
+  const [inputBoxVal, setInputBoxVal] = useState("");
+
+  return (
+    <div>
+      <input
+        value={inputBoxVal}
+        ref={ref}
+        onKeyUp={(e) => {
+          if (e.key == "Backspace") {
+            onBack();
+          }
+        }}
+        onChange={(e) => {
+          const val = e.target.value;
+          if (!isNaN(Number(val)) && Number(val) >= 0 && Number(val) <= 9) {
+            setInputBoxVal(val);
+            onDone();
+          } else {
+            setInputBoxVal("");
+          }
+        }}
+        type="text"
+        className="m-1 w-[40px] h-[50px] rounded-xl bg-blue-500 px-4 text-white outline-none"
+      ></input>
+    </div>
+  );
+};
+
+export default Otp;
