@@ -21,7 +21,7 @@ function isLegal(age: number){
 function delayedCall(fn: (a:string)=> void){
     setTimeout(fn,1000);
 }
-
+ 
 delayedCall(function(){
     console.log("Hello");
 })
@@ -36,3 +36,7 @@ console.log(`Sum:  ${ans}`);
 greet("Mahajan")
 
 console.log(x);
+
+let greet2 = () => {
+    console.log("Hi there");
+}
