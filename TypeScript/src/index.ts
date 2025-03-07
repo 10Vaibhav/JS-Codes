@@ -2,7 +2,7 @@ let x: number= 1;
 
 // x = "Vaibhav"
 
-function greet(name: string){
+function greet4(name: string){
     console.log(`Hello ${name}`);
 }
 function sum(a:number, b: number): number {
@@ -26,14 +26,14 @@ delayedCall(function(){
     console.log("Hello");
 })
 
-delayedCall(()=>greet("Vaibhav"));
+delayedCall(()=>greet4("Vaibhav"));
 
 console.log(isLegal(17));
 
 let ans = sum(2,3);
 console.log(`Sum:  ${ans}`);
 
-greet("Mahajan")
+greet4("Mahajan")
 
 console.log(x);
 
