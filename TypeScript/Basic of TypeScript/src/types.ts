@@ -8,6 +8,11 @@ function sum2(a: SumInput, b: SumInput){
     return String(a) + String(b);
 }
 
+// ts can sum number + number
+// ts can sum String + number
+// ts can sum String + String
+// ts can not sum (String | number) + (String | number)
+
 // Intersection
 
 interface Employee  {
