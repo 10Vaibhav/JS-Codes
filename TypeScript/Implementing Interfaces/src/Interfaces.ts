@@ -30,7 +30,7 @@ function isLegal(user: User3): boolean {
     if(user.age >=18){
         return true;
     }else{
-        return true;
+        return false;
     }
 
 }
