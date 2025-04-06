@@ -48,7 +48,7 @@ wss.on("connection", (socket) => {
     socket.on("disconnect", ()=> {
 
         allSockets.filter((s)=> {
-            s.socket != socket
+            s.socket !== socket
         });
     });
 
