@@ -14,17 +14,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const pg_1 = require("pg");
 const express_1 = __importDefault(require("express"));
+const dotenv_1 = __importDefault(require("dotenv"));
+dotenv_1.default.config();
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
-// const pgClient = new Client(
-//     "postgresql://neondb_owner:npg_5bv3mNcFgKTO@ep-shiny-fire-a574vrv0-pooler.us-east-2.aws.neon.tech/neondb?sslmode=require"
-// )
 const pgClient = new pg_1.Client({
-    user: "neondb_owner",
-    password: "npg_5bv3mNcFgKTO",
+    user: process.env.user,
+    password: process.env.password,
     port: 5432,
-    host: "ep-shiny-fire-a574vrv0-pooler.us-east-2.aws.neon.tech",
-    database: "neondb",
+    host: process.env.host,
+    database: process.env.database,
     ssl: true
 });
 function main() {
