@@ -28,6 +28,8 @@ const appRouter = router({
             }))
             .mutation(async (opts) => {
                 //context
+                const username = opts.ctx.username;
+                console.log("sign Up context: ", username)
 
                 let email = opts.input.email;
                 let password = opts.input.password;
@@ -39,11 +41,30 @@ const appRouter = router({
                 return {
                     token
                 }
-            })
+            }),
+    createTodo: publicProcedure
+                .input(z.object({
+                    title: z.string()
+                }))
+                .mutation(async (opts)=> {
+                    console.log("create todo context username : " +opts.ctx.username)
+                    return{
+                        id: "1"
+                    }
+                }),
 });
 
 const server = createHTTPServer({
     router: appRouter,
+    createContext(opts){
+        let authHeader = opts.req.headers["authorization"];
+        console.log("auth Header: ", authHeader);
+
+        // jwt.verify()
+        return {
+            username: "1234"
+        }
+    }
 });
 
 server.listen(3000);
