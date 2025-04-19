@@ -27,6 +27,8 @@ const appRouter = router({
                 password: z.string(),
             }))
             .mutation(async (opts) => {
+                //context
+
                 let email = opts.input.email;
                 let password = opts.input.password;
 

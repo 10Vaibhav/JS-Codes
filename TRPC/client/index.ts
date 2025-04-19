@@ -20,7 +20,7 @@ async function main(){
         password: "123123"
     });
 
-    console.log(response);
+    console.log(response.token);
 }
 
 main();
