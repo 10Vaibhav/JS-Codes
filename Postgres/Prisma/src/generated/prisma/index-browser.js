@@ -122,7 +122,8 @@ exports.Prisma.UserScalarFieldEnum = {
   username: 'username',
   password: 'password',
   age: 'age',
-  city: 'city'
+  city: 'city',
+  college: 'college'
 };
 
 exports.Prisma.TodoScalarFieldEnum = {

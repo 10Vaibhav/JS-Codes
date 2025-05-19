@@ -32,11 +32,12 @@ app.get("/todos/:id", async(req, res)=> {
 })
 
 
-async function createUser(username: string, password: string, age: number, city: string) {
+async function createUser(username: string, password: string,college: string ,age: number, city: string) {
     await client.user.create({
         data: {
             username,
             password,
+            college,
             age,
             city
         }
@@ -66,7 +67,7 @@ async function updateUser() {
 async function getUser() {
     const user = await client.user.findFirst({
         where: {
-            id: 4
+            id: 6
         },
         include: {
             todos: true
@@ -78,7 +79,7 @@ async function getUser() {
 
 
 // Insert Data
-// createUser("Mahajan", "123456", 21, "Katol");
+// createUser("Bhimrao", "4567", "Ycce", 21, "Nagpur");
 
 // Read Data
 // getUser();

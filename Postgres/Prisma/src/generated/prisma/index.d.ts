@@ -1018,6 +1018,7 @@ export namespace Prisma {
     password: string | null
     age: number | null
     city: string | null
+    college: string | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -1026,6 +1027,7 @@ export namespace Prisma {
     password: string | null
     age: number | null
     city: string | null
+    college: string | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -1034,6 +1036,7 @@ export namespace Prisma {
     password: number
     age: number
     city: number
+    college: number
     _all: number
   }
 
@@ -1054,6 +1057,7 @@ export namespace Prisma {
     password?: true
     age?: true
     city?: true
+    college?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -1062,6 +1066,7 @@ export namespace Prisma {
     password?: true
     age?: true
     city?: true
+    college?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -1070,6 +1075,7 @@ export namespace Prisma {
     password?: true
     age?: true
     city?: true
+    college?: true
     _all?: true
   }
 
@@ -1165,6 +1171,7 @@ export namespace Prisma {
     password: string
     age: number
     city: string
+    college: string
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -1192,6 +1199,7 @@ export namespace Prisma {
     password?: boolean
     age?: boolean
     city?: boolean
+    college?: boolean
     todos?: boolean | User$todosArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
@@ -1202,6 +1210,7 @@ export namespace Prisma {
     password?: boolean
     age?: boolean
     city?: boolean
+    college?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1210,6 +1219,7 @@ export namespace Prisma {
     password?: boolean
     age?: boolean
     city?: boolean
+    college?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -1218,9 +1228,10 @@ export namespace Prisma {
     password?: boolean
     age?: boolean
     city?: boolean
+    college?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "password" | "age" | "city", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "password" | "age" | "city" | "college", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     todos?: boolean | User$todosArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -1239,6 +1250,7 @@ export namespace Prisma {
       password: string
       age: number
       city: string
+      college: string
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -1668,6 +1680,7 @@ export namespace Prisma {
     readonly password: FieldRef<"User", 'String'>
     readonly age: FieldRef<"User", 'Int'>
     readonly city: FieldRef<"User", 'String'>
+    readonly college: FieldRef<"User", 'String'>
   }
     
 
@@ -3213,7 +3226,8 @@ export namespace Prisma {
     username: 'username',
     password: 'password',
     age: 'age',
-    city: 'city'
+    city: 'city',
+    college: 'college'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -3312,6 +3326,7 @@ export namespace Prisma {
     password?: StringFilter<"User"> | string
     age?: IntFilter<"User"> | number
     city?: StringFilter<"User"> | string
+    college?: StringFilter<"User"> | string
     todos?: TodoListRelationFilter
   }
 
@@ -3321,6 +3336,7 @@ export namespace Prisma {
     password?: SortOrder
     age?: SortOrder
     city?: SortOrder
+    college?: SortOrder
     todos?: TodoOrderByRelationAggregateInput
   }
 
@@ -3333,6 +3349,7 @@ export namespace Prisma {
     password?: StringFilter<"User"> | string
     age?: IntFilter<"User"> | number
     city?: StringFilter<"User"> | string
+    college?: StringFilter<"User"> | string
     todos?: TodoListRelationFilter
   }, "id" | "username">
 
@@ -3342,6 +3359,7 @@ export namespace Prisma {
     password?: SortOrder
     age?: SortOrder
     city?: SortOrder
+    college?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -3358,6 +3376,7 @@ export namespace Prisma {
     password?: StringWithAggregatesFilter<"User"> | string
     age?: IntWithAggregatesFilter<"User"> | number
     city?: StringWithAggregatesFilter<"User"> | string
+    college?: StringWithAggregatesFilter<"User"> | string
   }
 
   export type TodoWhereInput = {
@@ -3422,6 +3441,7 @@ export namespace Prisma {
     password: string
     age: number
     city: string
+    college?: string
     todos?: TodoCreateNestedManyWithoutUserInput
   }
 
@@ -3431,6 +3451,7 @@ export namespace Prisma {
     password: string
     age: number
     city: string
+    college?: string
     todos?: TodoUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -3439,6 +3460,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     age?: IntFieldUpdateOperationsInput | number
     city?: StringFieldUpdateOperationsInput | string
+    college?: StringFieldUpdateOperationsInput | string
     todos?: TodoUpdateManyWithoutUserNestedInput
   }
 
@@ -3448,6 +3470,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     age?: IntFieldUpdateOperationsInput | number
     city?: StringFieldUpdateOperationsInput | string
+    college?: StringFieldUpdateOperationsInput | string
     todos?: TodoUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -3457,6 +3480,7 @@ export namespace Prisma {
     password: string
     age: number
     city: string
+    college?: string
   }
 
   export type UserUpdateManyMutationInput = {
@@ -3464,6 +3488,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     age?: IntFieldUpdateOperationsInput | number
     city?: StringFieldUpdateOperationsInput | string
+    college?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -3472,6 +3497,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     age?: IntFieldUpdateOperationsInput | number
     city?: StringFieldUpdateOperationsInput | string
+    college?: StringFieldUpdateOperationsInput | string
   }
 
   export type TodoCreateInput = {
@@ -3568,6 +3594,7 @@ export namespace Prisma {
     password?: SortOrder
     age?: SortOrder
     city?: SortOrder
+    college?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
@@ -3581,6 +3608,7 @@ export namespace Prisma {
     password?: SortOrder
     age?: SortOrder
     city?: SortOrder
+    college?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -3589,6 +3617,7 @@ export namespace Prisma {
     password?: SortOrder
     age?: SortOrder
     city?: SortOrder
+    college?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
@@ -3891,6 +3920,7 @@ export namespace Prisma {
     password: string
     age: number
     city: string
+    college?: string
   }
 
   export type UserUncheckedCreateWithoutTodosInput = {
@@ -3899,6 +3929,7 @@ export namespace Prisma {
     password: string
     age: number
     city: string
+    college?: string
   }
 
   export type UserCreateOrConnectWithoutTodosInput = {
@@ -3922,6 +3953,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     age?: IntFieldUpdateOperationsInput | number
     city?: StringFieldUpdateOperationsInput | string
+    college?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserUncheckedUpdateWithoutTodosInput = {
@@ -3930,6 +3962,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     age?: IntFieldUpdateOperationsInput | number
     city?: StringFieldUpdateOperationsInput | string
+    college?: StringFieldUpdateOperationsInput | string
   }
 
   export type TodoCreateManyUserInput = {

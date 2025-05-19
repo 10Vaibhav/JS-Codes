@@ -7,7 +7,7 @@ function App() {
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
-    const ws = new WebSocket("ws://localhost:8080");
+    const ws = new WebSocket("ws://localhost:8081");
     ws.onmessage = (event) => {
       setMessages(m => [...m, event.data])
     }

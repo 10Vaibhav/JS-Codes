@@ -1,0 +1,7 @@
+1. npx prisma migrate dev - Creates a new migration file based on your schema changes and applies it to your development database. This keeps your database structure in sync with your Prisma schema.
+
+2. npx prisma generate - Updates your Prisma Client based on your schema. This generates TypeScript types that match your database structure for type-safe database access in your code.
+
+Together, these commands help you evolve your database schema and keep your code in sync with those changes.
+
+npx prisma init -> generate prisma related file (ex. Schema.prisma)
