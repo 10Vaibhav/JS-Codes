@@ -1,36 +1,17 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js Concepts - Quick Definitions
 
-## Getting Started
+## API Routes in Next.js
 
-First, run the development server:
+Server-side endpoints built within your Next.js application that handle HTTP requests (GET, POST, PUT, DELETE) and return responses. They allow you to create backend functionality without a separate server.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Frontend for Signing Up
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The client-side user interface components and forms that collect user registration information (email, password, name) and send it to the backend API for account creation.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Databases
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+External data storage systems (like PostgreSQL, MySQL, MongoDB) that persist user information, application data, and other records outside of your application code.
 
-## Learn More
+## Singleton Prisma Client
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+A design pattern that ensures only one instance of the Prisma database client exists throughout your application, preventing multiple database connections and potential memory issues during development.
