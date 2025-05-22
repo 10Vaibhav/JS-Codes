@@ -1,36 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NextAuth.js Authentication Guide
 
-## Getting Started
+## What is NextAuth?
+Complete authentication solution for Next.js that handles login, sessions, and security automatically.
 
-First, run the development server:
+## Why JWT + localStorage is BAD ❌
+- **Security vulnerability**: Tokens can be stolen via XSS attacks
+- **Loses SSR benefits**: Can't access localStorage on server-side
+- **No automatic protection**: Manual security implementation required
+- **Session management**: No built-in refresh or expiration handling
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## NextAuth Providers
+Multiple login options: Google, GitHub, Email/Password, Magic Links, or custom authentication.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Catch-All Routes [...nextauth]
+Single file handles all auth endpoints: sign-in, sign-out, callbacks, and session management.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## useSession() - Client-Side
+React hook that provides current user status and data in components.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## getServerSession() - Server-Side  
+Gets user session on server for protected pages and API routes.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Key Benefits
+✅ **Secure by default**  
+✅ **SSR compatible**  
+✅ **Multiple providers**  
+✅ **Automatic CSRF protection**
