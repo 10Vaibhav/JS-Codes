@@ -1,0 +1,1 @@
+# AIM to Learn about Authentication and Middlewares in NextJs !!
