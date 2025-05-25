@@ -30,6 +30,10 @@ export default function SignupPage() {
     }
   };
 
+  const onForgot = () => {
+    router.push("/forgot");
+  }
+
   useEffect(()=> {
       if(user.email.length> 0 && user.password.length > 0){
         setButtonDisabled(false);
@@ -87,6 +91,15 @@ export default function SignupPage() {
             className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-purple-400/30"
           >
             {buttonDisabled ? "No Login": "Login Here!"}
+          </button>
+        </div>
+
+        <div>
+          <button
+            onClick={onForgot}
+            className="mt-6 w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-purple-400/30"
+          >
+            Forgot Password
           </button>
         </div>
 
