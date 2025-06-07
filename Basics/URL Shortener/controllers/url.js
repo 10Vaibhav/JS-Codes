@@ -11,6 +11,7 @@ export async function handleGenerateNewShortURL (req, res) {
         shortId: shortId,
         redirectURL: body.url,
         visitHistory: [],
+        createdBy: req.user._id,
     });
 
     return res.render('home', {
@@ -36,7 +37,7 @@ export async function handleAnalytics(req, res){
         visitHistory:{
             timestamp: Date.now()
         }
-    },});
+    },}); 
 
     res.redirect(entry.redirectURL);
 }

@@ -11,10 +11,13 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
+    "cookie-parser": "^1.4.7",
     "dotenv": "^16.5.0",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.15.1",
-    "nanoid": "^5.1.5"
+    "nanoid": "^5.1.5",
+    "uuid": "^11.1.0"
   }
 }
