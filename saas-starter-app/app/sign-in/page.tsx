@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
+import { useState } from "react";
 import { useSignIn } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -7,24 +9,22 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
   Card,
-  CardContent,
-  CardFooter,
   CardHeader,
   CardTitle,
+  CardContent,
+  CardFooter,
 } from "@/components/ui/card";
-import { useState } from "react";
 import { Label } from "@/components/ui/label";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Eye, EyeOff } from "lucide-react";
 
-const SignIn = () => {
-  const router = useRouter();
-
+export default function SignIn() {
   const { isLoaded, signIn, setActive } = useSignIn();
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const router = useRouter();
 
   if (!isLoaded) {
     return null;
@@ -32,9 +32,8 @@ const SignIn = () => {
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
-
     if (!isLoaded) {
-      return null;
+      return;
     }
 
     try {
@@ -47,11 +46,11 @@ const SignIn = () => {
         await setActive({ session: result.createdSessionId });
         router.push("/dashboard");
       } else {
-        console.log(JSON.stringify(result, null, 2));
+        console.error(JSON.stringify(result, null, 2));
       }
-    } catch (error: any) {
-      console.log("Error", error.errors[0].message);
-      setError(error.errors[0].message);
+    } catch (err: any) {
+      console.error("error", err.errors[0].message);
+      setError(err.errors[0].message);
     }
   }
 
@@ -122,6 +121,4 @@ const SignIn = () => {
       </Card>
     </div>
   );
-};
-
-export default SignIn;
+}

@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
+import { useState } from "react";
 import { useSignUp } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -7,30 +9,27 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
   Card,
-  CardContent,
-  CardFooter,
   CardHeader,
   CardTitle,
+  CardContent,
+  CardFooter,
 } from "@/components/ui/card";
-import { useState } from "react";
 import { Label } from "@/components/ui/label";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Eye, EyeOff } from "lucide-react";
 
-const Signup = () => {
+export default function SignUp() {
   const { isLoaded, signUp, setActive } = useSignUp();
-
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
   const [pendingVerification, setPendingVerification] = useState(false);
   const [code, setCode] = useState("");
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-
   const router = useRouter();
 
   if (!isLoaded) {
-    return <div>...Loading</div>;
+    return null;
   }
 
   async function submit(e: React.FormEvent) {
@@ -40,48 +39,41 @@ const Signup = () => {
     }
 
     try {
-      // Flow for creating a user.
       await signUp.create({
         emailAddress,
         password,
       });
 
-      // Flow for Email Verification.
-      await signUp.prepareEmailAddressVerification({
-        strategy: "email_code",
-      });
+      await signUp.prepareEmailAddressVerification({ strategy: "email_code" });
 
       setPendingVerification(true);
-    } catch (error: any) {
-      console.log(JSON.stringify(error, null, 2));
-      setError(error.errors[0].message);
+    } catch (err: any) {
+      console.error(JSON.stringify(err, null, 2));
+      setError(err.errors[0].message);
     }
   }
 
   async function onPressVerify(e: React.FormEvent) {
     e.preventDefault();
-
     if (!isLoaded) {
       return;
     }
 
     try {
-      const completeSignup = await signUp.attemptEmailAddressVerification({
+      const completeSignUp = await signUp.attemptEmailAddressVerification({
         code,
       });
-
-      if (completeSignup.status !== "complete") {
-        console.log(JSON.stringify(completeSignup, null, 2));
-        alert("Signup failed. Please try again.");
+      if (completeSignUp.status !== "complete") {
+        console.log(JSON.stringify(completeSignUp, null, 2));
       }
 
-      if (completeSignup.status === "complete") {
-        await setActive({ session: completeSignup.createdSessionId });
+      if (completeSignUp.status === "complete") {
+        await setActive({ session: completeSignUp.createdSessionId });
         router.push("/dashboard");
       }
-    } catch (error: any) {
-      console.log(JSON.stringify(error, null, 2));
-      setError(error.errors[0].message);
+    } catch (err: any) {
+      console.error(JSON.stringify(err, null, 2));
+      setError(err.errors[0].message);
     }
   }
 
@@ -134,6 +126,8 @@ const Signup = () => {
                   <AlertDescription>{error}</AlertDescription>
                 </Alert>
               )}
+
+              <div id="clerk-captcha" data-cl-theme="dark" data-cl-size="flexible" data-cl-language="es-ES" />
               <Button type="submit" className="w-full">
                 Sign Up
               </Button>
@@ -175,6 +169,4 @@ const Signup = () => {
       </Card>
     </div>
   );
-};
-
-export default Signup;
+}
