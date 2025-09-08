@@ -15,7 +15,7 @@ export default clerkMiddleware(async (auth, req) => {
     try {
       const clerk = await clerkClient();
       clerk.authenticateRequest(req, {
-        authorizedParties: ['https://eager-yaks-lose.loca.lt/']
+        authorizedParties: ['https://good-toes-punch.loca.lt/']
       })
       const user = await clerk.users.getUser((auth as any).userId);
       const role = user.publicMetadata.role as string | undefined;

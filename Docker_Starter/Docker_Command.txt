@@ -1,0 +1,8 @@
+docker images
+docker ps
+docker run -p 3000:3000 image_name
+docker run -p 3000:3000 -e DATABASE_URL="" image_name
+docker build -t image_name .
+docker kill
+docker exec -it <container_name_or_id> file_name
+docker push your_username/your_reponame:tagname
